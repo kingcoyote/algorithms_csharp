@@ -10,7 +10,7 @@ namespace Algorithms
     {
         private readonly int[] _parent;
         private readonly int[] _size;
-        public int Count { get; private set; };
+        public int Count { get; private set; }
 
         public QuickUnion(int n)
         {
