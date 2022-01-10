@@ -16,7 +16,7 @@ namespace Algorithms {
             }
         }
 
-        public static Graph From2DArray(int w, int h) {
+        public static Graph From2DArray(int w, int h, bool allowDiag) {
             var graph = new Graph(w*h);
 
             for (int x = 0; x < w; x++) {
@@ -27,6 +27,13 @@ namespace Algorithms {
                     if (x < w - 1) graph.addEdge(v, v+1);
                     if (y > 0)     graph.addEdge(v, v-h);
                     if (y < h - 1) graph.addEdge(v, v+h);
+
+                    if (!allowDiag) continue;
+
+                    if (x > 0 && y > 0)         graph.addEdge(v, v-h-1);
+                    if (x > 0 && y < h - 1)     graph.addEdge(v, v+h-1);
+                    if (x < w - 1 && y > 0)     graph.addEdge(v, v-h+1);
+                    if (x < w - 1 && y < h - 1) graph.addEdge(v, v+h+1);
                 }
             }
 
@@ -34,8 +41,8 @@ namespace Algorithms {
         }
 
         public void addEdge(int v, int w) {
-            Edges[v].Add(w);
-            Edges[w].Add(v);
+            if (Edges[v].Contains(w) == false) Edges[v].Add(w);
+            if (Edges[w].Contains(v) == false) Edges[w].Add(v);
         }
 
         public List<int> adj(int v) {
