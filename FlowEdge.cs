@@ -9,7 +9,7 @@ namespace Algorithms
         public double Capacity { get; private set; }
         public double Flow { get; private set; }
 
-        public FlowEdge(int @from, int to, double capacity, double flow)
+        public FlowEdge(int @from, int to, double capacity, double flow = 0.0)
         {
             if (@from < 0)           throw new IndexOutOfRangeException();
             if (to < 0)              throw new IndexOutOfRangeException();
@@ -21,11 +21,6 @@ namespace Algorithms
             To = to;
             Capacity = capacity;
             Flow = flow;
-        }
-
-        public FlowEdge(int @from, int to, double capacity) : this(from, to, capacity, 0.0)
-        {
-
         }
 
         public FlowEdge(FlowEdge e) : this (e.From, e.To, e.Capacity, e.Flow)
