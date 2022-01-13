@@ -28,7 +28,7 @@ namespace Algorithms
                 // compute bottleneck capacity;
                 for (var v = t; v != s; v = _edgeTo[v].Other(v))
                 {
-                    bottle = Math.Min(bottle, _edgeTo[v].ResidualCapacityTo(v));
+                    if (_edgeTo != null) bottle = Math.Min(bottle, _edgeTo[v].ResidualCapacityTo(v));
                 }
 
                 // augment flow
