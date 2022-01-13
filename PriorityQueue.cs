@@ -58,9 +58,7 @@ namespace Algorithms
 
         private void Exch(int n, int m)
         {
-            TValue x = _elements[n];
-            _elements[n] = _elements[m];
-            _elements[m] = x;
+            (_elements[n], _elements[m]) = (_elements[m], _elements[n]);
         }
 
         private void Swim(int k)
