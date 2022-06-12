@@ -50,6 +50,11 @@ namespace Algorithms
             return _size == 0;
         }
 
+        public int Length()
+        {
+            return _size;
+        }
+
         private void Resize(int capacity) {
             var temp = new TValue[capacity];
             for (int i = 1; i <= _size; i++) temp[i] = _elements[i];
