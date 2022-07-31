@@ -19,21 +19,17 @@ namespace Algorithms {
         public static Graph From2DArray(int w, int h, bool allowDiag) {
             var graph = new Graph(w*h);
 
-            for (int x = 0; x < w; x++) {
-                for (int y = 0; y < h; y++) {
-                    int v = y * h + x;
+            for (int y = 0; y < h; y++) {
+                for (int x = 0; x < w; x++) {
+                
+                    int v = y * w + x;
 
                     if (x > 0)     graph.addEdge(v, v-1);
                     if (x < w - 1) graph.addEdge(v, v+1);
-                    if (y > 0)     graph.addEdge(v, v-h);
-                    if (y < h - 1) graph.addEdge(v, v+h);
+                    if (y > 0)     graph.addEdge(v, v-w);
+                    if (y < h - 1) graph.addEdge(v, v+w);
 
                     if (!allowDiag) continue;
-
-                    if (x > 0 && y > 0)         graph.addEdge(v, v-h-1);
-                    if (x > 0 && y < h - 1)     graph.addEdge(v, v+h-1);
-                    if (x < w - 1 && y > 0)     graph.addEdge(v, v-h+1);
-                    if (x < w - 1 && y < h - 1) graph.addEdge(v, v+h+1);
                 }
             }
 
