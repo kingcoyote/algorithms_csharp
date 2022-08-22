@@ -56,5 +56,10 @@ namespace Algorithms
                 _size[rootP] += _size[rootQ];
             }
         }
+
+        public int Size(int i)
+        {
+            return _size[i];
+        }
     }
 }
