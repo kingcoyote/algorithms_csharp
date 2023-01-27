@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Algorithms
 {
-    class QuickUnion
+    public class QuickUnion
     {
         private readonly int[] _parent;
         private readonly int[] _size;

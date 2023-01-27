@@ -6,6 +6,7 @@ namespace Algorithms
     {
         private TValue[] _elements;
         private int _size;
+        public int Length => _size;
 
         public PriorityQueue(int n)
         {
@@ -13,7 +14,7 @@ namespace Algorithms
             _size = 0;
         }
 
-        public void Insert(TValue x)
+        public void Enqueue(TValue x)
         {
             if (_size == _elements.Length - 1) Resize(_elements.Length * 2);
 
@@ -21,7 +22,7 @@ namespace Algorithms
             Swim(_size);
         }
 
-        public TValue DelMin()
+        public TValue Dequeue()
         {
             if (IsEmpty())
             {
@@ -40,7 +41,7 @@ namespace Algorithms
             return min;
         }
 
-        public TValue Min()
+        public TValue Peek()
         {
             return _elements[0];
         }
@@ -50,9 +51,9 @@ namespace Algorithms
             return _size == 0;
         }
 
-        public int Length()
+        public void Reprioritize()
         {
-            return _size;
+            throw new NotImplementedException();
         }
 
         private void Resize(int capacity) {

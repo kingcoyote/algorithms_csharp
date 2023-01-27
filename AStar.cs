@@ -8,14 +8,14 @@ namespace Algorithms
         public static IEnumerable<IAStarNode> GeneratePath(IAStarNode start, IAStarNode end)
         {
             var nodeQueue = new PriorityQueue<AStarPQNode>(16);
-            nodeQueue.Insert(new AStarPQNode {Node = start});
+            nodeQueue.Enqueue(new AStarPQNode {Node = start});
             var processedNodes = new Dictionary<IAStarNode, AStarPQNode>();
 
             AStarPQNode current = null;
 
             while (!nodeQueue.IsEmpty())
             {
-                current = nodeQueue.DelMin();
+                current = nodeQueue.Dequeue();
                 if (current.Node.Equals(end)) break;
 
                 foreach (var neighbor in current.Node.GetNeighbors())
@@ -46,7 +46,7 @@ namespace Algorithms
                     processedNodes.Add(neighbor, neighborNode);
 
                     // add this node to the queue to process
-                    nodeQueue.Insert(neighborNode);
+                    nodeQueue.Enqueue(neighborNode);
                 }
 
                 current = null;
